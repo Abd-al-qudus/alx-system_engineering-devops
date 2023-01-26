@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script list the cwd following a specific pattern
+LIST=$(ls)
+for listOb in $LIST; do
+	name=${listOb##*-}
+	echo $name
+done
