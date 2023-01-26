@@ -3,14 +3,13 @@
 min=1
 hour=0
 while [ $hour -le 12 ]; do
+	if [ $hour -le 12 ]; then
+		echo "Hour: $hour"
+	fi
 	while [ $min -lt 60 ]; do
 		echo $min
 		min=$((min+1))
 	done
 	min=$((1))
 	hour=$((hour+1))
-	if [ $hour -le 12 ]; then
-		echo "Hour: $hour"
-	fi
 done
-
