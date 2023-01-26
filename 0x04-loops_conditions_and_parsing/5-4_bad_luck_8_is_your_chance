@@ -10,7 +10,7 @@ while [ $i -le 10 ]; do
 	elif [ $i -eq 8 ]; then
 		echo "good luck"
 	else
-		echo "best School"
+		echo "Best School"
 	fi
 	i=$((i+1))
 done
