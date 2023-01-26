@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script print Best School 10 times.
+message="Best School"
+for _i in $(seq 1 10); do
+	echo "$message"
+done
+

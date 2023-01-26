@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script prints Best School 10 times with until loop
+i=1
+message="Best School"
+until [ $i -gt 10 ]; do
+	echo "$message"
+	i=$((i+1))
+done
+
