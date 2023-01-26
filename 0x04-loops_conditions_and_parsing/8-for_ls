@@ -3,5 +3,5 @@
 LIST=$(ls)
 for listOb in $LIST; do
 	name=${listOb##*-}
-	echo $name
+	echo "$name"
 done
