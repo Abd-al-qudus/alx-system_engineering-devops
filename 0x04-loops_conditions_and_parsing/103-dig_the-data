@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script extract ip addresses and status codes
+# fram a log file, sort the extract and print the 
+# occurence, IP and status code
+file="apache-access.log"
+awk -F' ' '{printf $1 " " $9 "\n"}' $file | sort | uniq -c | sort -nr
+
