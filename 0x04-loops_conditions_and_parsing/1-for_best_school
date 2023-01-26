@@ -4,4 +4,3 @@ message="Best School"
 for _i in $(seq 1 10); do
 	echo "$message"
 done
-
