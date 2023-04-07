@@ -2,22 +2,25 @@
 # Configures a new ubuntu machine by installing
 # Nginx listening on port 80
 
-echo -e "Updating and installing $Nginx.\n"
- apt-get update -y -qq && \
-	 apt-get install nginx -y
+apt-get update
+apt-get install -y nginx
 
-echo -e "\nConfiguring Nginx...\n"
+# Configure Nginx to listen on port 80 and serve "Hello World!" at root
+echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
 
-# starting nginx service and allow on firewall
-sudo service nginx start
-sudo ufw allow 'Nginx HTTP'
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
 
-# Give the user ownership to website files and back up index files
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+        server_name _;
 
-# Creating a new index file piped into index and restart nginx
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
-sudo service nginx restart
-echo -e "\nConfiguration Completed.\n"
+        location / {
+                try_files \$uri \$uri/ =404;
+                echo 'Hello World!' > /var/www/html/index.html;
+        }
+}" > /etc/nginx/sites-available/default
+
+# Restart Nginx with kill
+kill -QUIT $(cat /var/run/nginx.pid)
+nginx -g "daemon on;"
