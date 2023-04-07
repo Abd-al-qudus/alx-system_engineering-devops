@@ -34,6 +34,10 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
+frontend http-in
+    bind *:80
+    default_backend servers
+
 backend engineerphoenix-tech-backend
     balance roundrobin
     server 148043-web-01 54.84.204.114:80 check
