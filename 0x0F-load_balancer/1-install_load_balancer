@@ -34,9 +34,9 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend http-in
+frontend engineerphoenix-tech-frontend
     bind *:80
-    default_backend servers
+    default_backend engineerphoenix-tech-backend
 
 backend engineerphoenix-tech-backend
     balance roundrobin
