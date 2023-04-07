@@ -9,5 +9,6 @@ SERVER=$2
 USER=$3
 KEY=$4
 
-# Transfer the file to the user's home directory on the server
+# Transfer the file to the user's home directory on the server using scp
+# with no strict host key checking
 scp -o StrictHostKeyChecking=no -i "$KEY" "$FILE" "$USER@$SERVER:~/"
