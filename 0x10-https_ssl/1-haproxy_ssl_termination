@@ -1,0 +1,17 @@
+
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+frontend engineerphoenix.tech-frontend
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/engineerphoenix.pem
+    http-request set-header X-Forwarded-Proto https
+    default_backend engineerphoenix.tech-backend
+backend engineerphoenix.tech-backend
+    mode http
+    balance roundrobin
+    server 148043-web-01 54.84.204.114:80 check
+    server 148043-web-02 54.157.173.22:80 check
