@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # this script runs whoami on the argument passed
-arg=$1
-su $1 -s /bin/bash -c 'whoami'
+su "$1" -s /bin/bash -c 'whoami'
