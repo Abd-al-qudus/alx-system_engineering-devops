@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# dump mysql db servers and store on a physical server
+if [ "$#" -eq 1 ]
+then
+	sudo mysqldump -uroot -p"$1" --all-databases > backup.sql
+	sudo tar -czvf `(date '+%d-%m-%Y')`.tar.gz backup.sql
+fi
