@@ -15,7 +15,7 @@ if __name__ == '__main__':
         user_details = req.get(user_url).json()
         completed = [userDict for userDict in resp
                      if userDict.get('completed')]
-        print('Employer {} is done with tasks({}/{}):'
+        print('Employee {} is done with tasks({}/{}):'
               .format(user_details.get('name'), len(completed), len(resp)))
         for user in completed:
             print('\t {}'.format(user.get('title')))
