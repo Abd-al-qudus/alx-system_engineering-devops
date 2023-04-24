@@ -18,4 +18,4 @@ if __name__ == '__main__':
         print('Employer {} is done with tasks({}/{}):'
               .format(user_details.get('name'), len(completed), len(resp)))
         for user in completed:
-            print(' \t{}'.format(user.get('title')))
+            print('\t {}'.format(user.get('title')))
