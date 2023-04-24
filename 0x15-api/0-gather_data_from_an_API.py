@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''This scripts gets an employee's todo list
    and return it using REST API'''
-from sys import argv
 import requests as req
+from sys import argv
 
 if __name__ == '__main__':
     if len(argv) != 2:
