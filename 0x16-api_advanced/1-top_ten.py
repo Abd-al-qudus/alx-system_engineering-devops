@@ -15,4 +15,5 @@ def top_ten(subreddit):
     API = "https://www.reddit.com/r/{}.json".format(subreddit)
     req = requests.get(API, allow_redirects=False, headers=headers).json()
     responses = req.get('data', {}).get('children', [])[:10]
-    [print(response.get('data', {}).get('title', "")) for response in responses]
+    [print(response.get('data', {}).get('title', None))
+        for response in responses]
