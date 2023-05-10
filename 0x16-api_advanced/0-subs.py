@@ -14,4 +14,4 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': 'Engineer-Phoenix-0x16-advanced-API'}
     API = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     req = requests.get(API, allow_redirects=False, headers=headers).json()
-    return req.get('data').get('subscribers')
+    return req.get('data', {}).get('subscribers', 0)
