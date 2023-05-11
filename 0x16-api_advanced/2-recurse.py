@@ -14,12 +14,13 @@ def recurse(subreddit, hot_list=[], count=0, after=''):
     header = {'User-Agent': 'Engr-phoenix'}
     param = {'limit': 100, 'count': count, 'after': after}
     resp = requests.get(API, headers=header, params=param,
-                        allow_redirects=False).json()
-    if not resp:
+                        allow_redirects=False)
+    if resp.status_code == 400:
         return None
-    after = resp.get('data').get('after')
-    count += resp.get('data').get('dist')
-    for post in resp.get('data').get('children'):
+    resp = resp.json()
+    after = resp.get('data', {}).get('after', "")
+    count += resp.get('data', {}).get('dist', 0)
+    for post in resp.get('data', {}).get('children', []):
         hot_list.append(post.get('data').get('title'))
     if after is not None:
         recurse(subreddit, hot_list, count, after)
