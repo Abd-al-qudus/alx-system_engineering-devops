@@ -10,12 +10,12 @@ def recurse(subreddit, hot_list=[], count=0, after=''):
     """get the hot list"""
     if not isinstance(subreddit, str) or subreddit is None:
         return None
-    API = "https://www.reddit.com/r/{}.json".format(subreddit)
+    API = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     header = {'User-Agent': 'Engr-phoenix'}
     param = {'limit': 100, 'count': count, 'after': after}
     resp = requests.get(API, headers=header, params=param,
                         allow_redirects=False)
-    if resp.status_code == 400:
+    if resp.status_code >= 400:
         return None
     resp = resp.json()
     after = resp.get('data', {}).get('after', "")
@@ -23,5 +23,5 @@ def recurse(subreddit, hot_list=[], count=0, after=''):
     for post in resp.get('data', {}).get('children', []):
         hot_list.append(post.get('data').get('title'))
     if after is not None:
-        recurse(subreddit, hot_list, count, after)
+        return recurse(subreddit, hot_list, count, after)
     return hot_list
