@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This script queries the reddit API 
+"""This script queries the reddit API
     recursively and prints the word present in
     the wordlist - case insensitive
     Author - Engineer Phoenix"""
